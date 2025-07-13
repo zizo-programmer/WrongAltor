@@ -1,0 +1,294 @@
+body{
+    background-color: #0c0420;
+    color: #fff;
+    font-family: "sans-serif", poppins;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+.calculator{
+    position: relative;
+background-color:#5d3c64;
+padding: 20px;
+border-radius: 20px;
+box-shadow: 0 0 25px rgb(228, 146, 234);
+width: 90%;
+max-width: 340px;
+margin: auto;
+}
+.inout-wrapper{
+    position: relative;
+}
+.calculator header{
+    text-align: center;
+    font-family: "sans-serif", poppins;
+    font-size: 20px;
+    font-weight: bold;
+   backdrop-filter: blur(1px);
+   background-color:#512e58;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 5px black, 0 0 3px white;
+    color: aliceblue;
+   padding: 10px;
+   border-radius: 10px;
+   box-shadow:0 2px 10px rgba(255, 255, 255, 0.7);
+   width: 100%;
+   margin-bottom: 40px;
+}
+
+#display{
+    width: 100%;
+    height: 50px;
+    font-size: 1.5rem;
+    padding: 10px;
+    border: 2PX solid transparent;
+    border-radius: 5px;
+    background-color:#e2d2c8bd;
+    margin-bottom: 40px;
+    text-align: right;
+    box-shadow: inset 0 0 20px #a43461f5;
+
+}
+.secret-btn{
+    position: absolute;
+    right: 50px;
+    top: 120px;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    background: transparent;
+    border: none;
+    opacity: 0;
+    z-index: 0;
+}
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+.buttons button{
+    background-color: #8e7692;
+    border: none;
+    font-size: 1.3rem;
+    color:#e2d2c8bd;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: "sans-serif", poppins;
+    font-weight: bold;
+    text-shadow: 0 0 5px black, 0 0 2px white;
+    box-shadow: 1px 1px 5px #e2d2c8bd;
+}
+.btn-circle{
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 60px;
+     box-shadow: 1px 1px 5px #e2d2c8bd;
+
+}
+.buttons button:active{
+    transform: scale(0.9);
+    box-shadow: inset 0 0 10px #e2d2c8bd;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.fake-btn{
+position: absolute;
+width: 60px;
+height: 60px;
+margin-left: 70%;
+margin-top: -18%;
+padding: 12px;
+font-size: 1.1rem;
+background-color: transparent;
+border: 2px solid #c8a6ce ;
+border-radius: 50%;
+pointer-events: auto;
+opacity: 0.4;
+transition: opacity 0.4s, ease;
+font-family: "sans-serif", Poppins;
+font-weight: bold;
+color: #fff;
+text-shadow: 0 0 5px black, 0 0 2px white;
+z-index: 5;
+}
+.fake-btn:active{
+        transform: scale(0.9);
+    box-shadow: inset 0 0 10px #e2d2c8bd;
+}
+.shake{
+    animation: shake 0.5s;
+}
+@keyframes shake{
+0% {transform: translate(0px, 0px);}
+25% {transform: translate(5px,0px);}
+50%{transform: translate(-5px,0px);}
+70%{transform: translate(5px,0px);}
+100%{transform: translate(0px,0px);}
+}
+.flash-danger{
+    animation: flashRed 0.4s ease-in-out 3;
+}
+@keyframes flashRed{
+    0%,100%{
+    background-color: #e2d2c8bd;
+    }
+    50%{background-color: #ff3b3b;}
+}
+#snackbar{
+    visibility: hidden;
+     min-width: 260px;
+     max-width: 80vh;
+     background-color: #333;
+     color:#fff;
+     text-align: center;
+     border-radius: 10px;
+     padding: 16px 20px;
+     position: fixed;
+     z-index: 9999;
+     left: 50%;
+     bottom: 30px;
+     transform:  translateX(-50%);
+     font-family: 'sans-serif',Poppins;
+     font-size: 16px;
+     box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+#snackbar.show{
+    visibility: visible;
+    animation: fadeInUp 0.5s, fadeOutDown 0.5s 3s;
+}
+@keyframes fadeInUp{
+    from{
+        bottom: 0 ;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+ @keyframes fadeOutDown{
+    from{
+        bottom: 30px;
+        opacity: 1;
+    }
+     to{
+        bottom: 0;
+        opacity: 0;
+     }
+ }
+  #challenge-box{
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #200022e5;
+    padding: 20px 30px;
+    border-radius: 15px;
+    color: #fff;
+    text-align: center;
+    font-family: 'sans-serif',Poppins;
+z-index: 9999;
+box-shadow: 0 0 20px #ff52f6;
+transition: opacity 0.3s;
+opacity: 0;
+pointer-events: none;
+
+  }
+  #challenge-box.show{
+    opacity: 1;
+    pointer-events: auto;
+    animation: pulseBox 0.5s ease-in-out;
+  }
+  @keyframes pulseBox{
+    0%{
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform:  translateX(-50%) scale(1.05);
+    }
+    100%{
+        transform: translateX(-50%) scale(1);
+    }
+  }
+   #countdown{
+font-size: 24px;
+font-weight: bold;
+margin-top: 10px;
+
+   }
+   #challenge-box.danger #countdown{
+    color: red;
+    animation: flashRed 0.5s infinite;
+   }
+   .hidden{
+    display: none;
+   }
+@media (max-width:500px) {
+    header{
+        font-size: 16px;
+        padding: 8vh ;
+    }
+    #display{
+        height: 45px;
+       font-size :1.2rem;
+    }
+    .btn-circle{
+        width: 55px;
+        height: 55px;
+        font-size: 1.2rem;
+    }
+    .fake-btn{
+        width: 55px;
+        height: 55px;
+        font-size: 0.8rem; 
+        margin-top: -55px;
+    }
+    #challenge-box{
+        padding: 14px;
+        font-size: 1.4rem;
+    }
+}
+@media( min-width:501px) and(max-width:768px){
+    .calculator{
+        padding: 25px;
+        max-width: 400px;
+    }
+    .btn-circle{
+        width: 60px;
+        height: 60px;
+        font-size: 1.1rem;
+    }
+    header{
+        font-size: 1.8rem;
+    }
+}
+@media  (min-width:769px) and(max-width:1024px){
+    .calculator{
+        max-width: 420px;
+        padding: 30px;
+    }
+    .btn-circle{
+        width: 65px;
+        height: 65px;
+        font-size: 1.2rem;
+    }
+}
+@media (min-width:1025px) {
+    .calculator{
+        max-width: 500px;
+        padding: 30px;
+    }
+    .btn-circle{
+        width: 70px;
+        height: 70px;
+        font-size: 1.3rem ;
+    }
+    
+}
