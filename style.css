@@ -279,6 +279,12 @@ margin-top: 10px;
         height: 65px;
         font-size: 1.2rem;
     }
+    .fake-btn{
+         width: 55px;
+        height: 55px;
+        font-size: 0.8rem; 
+        margin-top: -55px;
+    }
 }
 @media (min-width:1025px) {
     .calculator{
@@ -289,6 +295,13 @@ margin-top: 10px;
         width: 70px;
         height: 70px;
         font-size: 1.3rem ;
+    }
+    .fake-btn{
+         width: 72px;
+        height: 72px;
+        font-size: 1.3rem; 
+        margin-top: -70px;
+        margin-left: 68%;
     }
     
 }
